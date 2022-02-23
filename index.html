@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+</head>
+<body>
+    <h1>My Todo List</h1>
+    <form action="{{url_for('create_todo')}}" method="POST">
+    <input type="text" name="new_todo" placeholder="Type your todos here">
+    <br /><br />
+    <button type="submit">Add</button>
+    
+    </form>
+    <div>
+        <h3>Todo's</h3>
+
+        <div>
+           {% for item in todos %}
+           <p>{{item}} <a href="{{url_for('delete', todo_item=item)}}">Delete</a>>
+            <a href="{{url_for('update', todo_item=item)}}">Update</a>>
+        </p>
+           {% endfor %}
+        </div>
+    </div>       
+</body>
+</html>
